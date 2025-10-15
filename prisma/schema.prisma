@@ -1,12 +1,11 @@
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -14,9 +13,9 @@ model User {
   name      String
   email     String    @unique
   password  String
-  bookings  Booking[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  bookings  Booking[]
 }
 
 model Barbershop {
@@ -43,13 +42,12 @@ model BarbershopServices {
 }
 
 model Booking {
-  id        String   @id @default(uuid())
+  id        String             @id @default(uuid())
   userId    String
   serviceId String
   data      DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user    User               @relation(fields: [userId], references: [id])
-  service BarbershopServices @relation(fields: [serviceId], references: [id])
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  service   BarbershopServices @relation(fields: [serviceId], references: [id])
+  user      User               @relation(fields: [userId], references: [id])
 }
