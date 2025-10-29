@@ -15,7 +15,7 @@ const Home = async () => {
   );
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       <Header />
       <main className="mx-auto w-full max-w-7xl flex-1 px-5 py-6 md:px-8 lg:px-10">
         {/* Saudação */}
@@ -101,13 +101,7 @@ const Home = async () => {
           </div>
         </section>
       </main>
-
-      <footer className="w-full bg-secondary px-5 py-6 md:py-8">
-        <p className="text-center text-sm text-gray-400 md:text-base">
-          © 2025 Copyright <span className="font-bold">FSW Barber</span>
-        </p>
-      </footer>
-    </div>
+    </>
   );
 };
 
