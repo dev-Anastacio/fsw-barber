@@ -20,33 +20,53 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
   const displayRating = rating > 0 ? rating.toFixed(1) : "Novo";
 
   return (
-    <Card className="min-w-[167px] rounded-2xl">
-      <CardContent className="p-0 px-1 pt-1">
-        <div className="relative h-[159px] w-full">
-          <Image
-            fill
-            className="rounded-2xl object-cover"
-            src={barbershop.imageUrl}
-            alt={barbershop.name}
-          />
-          <Badge
-            className="absolute left-2 top-2 z-10 flex items-center gap-1"
-            variant="secondary"
-          >
-            <StarIcon
-              size={12}
-              className={
-                rating > 0 ? "fill-primary text-primary" : "text-primary"
-              }
+    <Card className="group min-w-[167px] overflow-hidden rounded-2xl transition-all hover:shadow-xl md:min-w-0">
+      <CardContent className="p-0">
+        {/* Imagem da barbearia */}
+        <Link href={`/barbershops/${barbershop.id}`}>
+          <div className="relative h-[159px] w-full overflow-hidden md:h-[180px] lg:h-[200px]">
+            <Image
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              src={barbershop.imageUrl}
+              alt={barbershop.name}
+              sizes="(max-width: 768px) 167px, (max-width: 1024px) 250px, 300px"
             />
-            <span className="text-xs font-semibold">{displayRating}</span>
-          </Badge>
-        </div>
-        <div className="px-2 py-3">
-          <h3 className="truncate font-semibold">{barbershop.name}</h3>
-          <p className="truncate text-sm text-gray-400">{barbershop.address}</p>
-          <Button asChild variant="secondary" className="mt-3 w-full" size="sm">
-            <Link href={`/barbershops/${barbershop.id}`}>Reservar</Link>
+            {/* Overlay escuro no hover */}
+            <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10" />
+
+            {/* Badge de rating */}
+            <Badge className="absolute left-3 top-3 z-10 flex items-center gap-1.5 shadow-md">
+              <StarIcon
+                size={14}
+                className={
+                  rating > 0 ? "fill-primary text-primary" : "text-primary"
+                }
+              />
+              <span className="text-xs font-bold">{displayRating}</span>
+            </Badge>
+          </div>
+        </Link>
+
+        {/* Informações da barbearia */}
+        <div className="space-y-3 p-3 md:p-4">
+          <div className="space-y-1">
+            <h3 className="truncate text-base font-bold leading-tight md:text-lg">
+              {barbershop.name}
+            </h3>
+            <p className="truncate text-xs text-gray-400 md:text-sm">
+              {barbershop.address}
+            </p>
+          </div>
+
+          {/* Botão de reserva */}
+          <Button
+            asChild
+            variant="default"
+            className="w-full font-semibold shadow-sm transition-all hover:shadow-md"
+            size="sm"
+          >
+            <Link href={`/barbershops/${barbershop.id}`}>Ver Barbearia</Link>
           </Button>
         </div>
       </CardContent>
