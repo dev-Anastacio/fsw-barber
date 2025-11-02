@@ -1,3 +1,4 @@
+import SidebarButton from "@/app/_components/sidebar-button";
 import { Button } from "@/app/_components/ui/Button";
 import PhoneItem from "@/app/_components/ui/phone-item";
 import { RatingStars } from "@/app/_components/ui/rating-stars";
@@ -48,13 +49,9 @@ const BarbershopsPage = async ({ params }: BarbershopsPageProps) => {
           </Link>
         </Button>
 
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute right-4 top-4 md:right-6 md:top-6"
-        >
-          <MenuIcon />
-        </Button>
+        <div className="absolute right-4 top-4 md:right-6 md:top-6">
+          <SidebarButton />
+        </div>
       </div>
 
       {/* Container principal centralizado */}

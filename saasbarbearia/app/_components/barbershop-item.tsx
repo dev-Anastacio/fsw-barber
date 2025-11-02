@@ -69,6 +69,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
             <Link href={`/barbershops/${barbershop.id}`}>Ver Barbearia</Link>
           </Button>
         </div>
+        
       </CardContent>
     </Card>
   );
