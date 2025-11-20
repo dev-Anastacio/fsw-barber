@@ -4,7 +4,7 @@ import PhoneItem from "@/app/_components/ui/phone-item";
 import { RatingStars } from "@/app/_components/ui/rating-stars";
 import ServiceItem from "@/app/_components/ui/service-item";
 import { prisma } from "@/app/_lib/prisma";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon } from "lucide-react";
+import { ChevronLeftIcon, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
